@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <% if (Math.random() > 0.5) { %>
+    <h2>Selamat, kamu beruntung! <%= name %></h2>
+    <h4>Mendapatkan hadiah Rp <%= prize %></h4>
+    <% } else { %>
+    <h4>Maaf anda belum beruntung</h4>
+    <% } %>
+
+    <p>Mencoba menampilkan json stringnya:</p>
+    <pre><%= jsonString %></pre>
+  </body>
+</html>
