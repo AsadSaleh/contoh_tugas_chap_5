@@ -5,20 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-    <nav>
-      <ul>
-        <a href="/"><li>Home</li></a>
-        <a href="/about"><li>About</li></a>
-        <a href="/projects"><li>Projects</li></a>
-      </ul>
-    </nav>
+    <%- include("includes/navbar.ejs"); %>
     <h1>Projects by As'ad</h1>
     <ol>
       <li>Website IDF (status: done)</li>
       <li>Website Iyada (status: done)</li>
       <li>Self driving car (status: in progress)</li>
     </ol>
+    <%- include("includes/footer.ejs"); %>
   </body>
 </html>

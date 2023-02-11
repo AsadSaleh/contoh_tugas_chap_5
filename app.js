@@ -7,38 +7,6 @@ const dataPemenang = require("./pemenang.json");
 
 app.set("view engine", "ejs");
 
-// database:
-const users = [
-  {
-    id: "1",
-    name: "As'ad",
-    job: "Programmer",
-    email: "asad@binar.com",
-    password: "test123",
-  },
-  {
-    id: "2",
-    name: "Laksman",
-    job: "Programmer",
-    email: "laksman@binar.com",
-    password: "test123",
-  },
-  {
-    id: "3",
-    name: "Adan",
-    job: "Farmer",
-    email: "adan@binar.com",
-    password: "test123",
-  },
-  {
-    id: "4",
-    name: "Kurnia",
-    job: "Miliarder",
-    email: "kurnia@binar.com",
-    password: "test123",
-  },
-];
-
 // middleware:
 app.use(express.static("public"));
 app.use(express.json());
@@ -58,51 +26,24 @@ const createLog = (req, res, next) => {
 
 app.use(createLog);
 
-// 1
-app.get("/user", (req, res) => {
-  res.json(users);
-});
-// 2
-app.get("/user/search", (req, res) => {
-  const job = req.query.job;
-  const filteredUsers = users.filter((user) => user.job === job);
-  res.json(filteredUsers);
-});
-// 3
-app.get("/user/:id", (req, res) => {
-  const id = req.params.id;
-  res.json(users.find((user) => user.id === id));
-});
-// 4
-app.post("/user", (req, res) => {
-  const newUser = req.body;
-  users.push(newUser);
-  res.json({ status: "OK", desc: "user created" });
-});
-// 5
-app.delete("/user/:id", (req, res) => {
-  const index = users.findIndex((user) => user.id === req.params.id);
-  delete users[index];
-  res.json({ status: "OK", desc: "user deleted" });
-});
+// Import userRouter:
+const userRouter = require("./userRouter");
+app.use(userRouter);
 
 // Bikin website sederhana
 app.get("/", (req, res) => {
-  const hasilJoin = path.join(__dirname, "/views/index.html");
-  console.log("apa sih hasil joinnya: ", hasilJoin);
-  res.sendFile(hasilJoin);
+  res.render("index");
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, "/views/about.html"));
+  res.render("about");
 });
 
 app.get("/projects", (req, res) => {
-  res.sendFile(path.join(__dirname, "/views/projects.html"));
+  res.render("projects");
 });
 
 app.get("/belajar-ejs", (req, res) => {
-  // res.sendFile(path.join(__dirname), "/view/belajar-ejs.ejs");
   res.render("belajar-ejs.ejs", { jsonString: JSON.stringify(dataPemenang) });
 });
 

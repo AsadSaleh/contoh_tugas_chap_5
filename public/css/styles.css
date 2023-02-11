@@ -4,3 +4,34 @@
 .text-blue {
   color: blue;
 }
+/*
+============================================
+ NAV BAR SECTION
+============================================
+*/
+.nav {
+  width: 100vw;
+  background-color: gray;
+  padding: 5px 20px;
+}
+
+.nav_container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.nav_item {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+/*
+============================================
+ FOOTER SECTION
+============================================
+*/
+.footer {
+  color: rgb(168, 168, 168);
+}
