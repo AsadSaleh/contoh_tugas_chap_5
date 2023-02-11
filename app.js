@@ -106,6 +106,20 @@ app.get("/belajar-ejs", (req, res) => {
   res.render("belajar-ejs.ejs", { jsonString: JSON.stringify(dataPemenang) });
 });
 
+// 1. Unmatched router handler:
+app.use((req, res, next) => {
+  res.status(404).json({
+    status: "gagal mengakses halaman",
+    message: "halaman tersebut tidak ada!!!",
+  });
+});
+
+// 2. Error handler:
+app.use((err, req, res, next) => {
+  // ngapain disini terserah kita:
+  res.sendFile(path.join(__dirname, "/views/error.html"));
+});
+
 // Nyalain servernya:
 app.listen(9000, () => {
   console.log("halo, app sudah nyalaaaa~~~");
